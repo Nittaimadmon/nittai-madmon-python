@@ -340,7 +340,7 @@ def get_response(message, user_name):
     # default_responses = [
     #     "That's interesting!",
     #     "Tell me more!",
-    #     "I see...",
+    #     "I see.",
     #     "Cool!",
     #     f"Thanks for sharing, {user_name}!"
     # ]

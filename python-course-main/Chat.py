@@ -29,6 +29,13 @@ compliments = [
     "you are so smart!",
     "you are so kind!"
 ]
+def default_response():
+    return ["That's interesting",
+             "Tell me more!",
+             "I see...",
+             "Cool!",
+             f"Thanks for sharing, {user_name}!"
+             ]
 def print_separator():
     print("=" * 20)  #
 
@@ -81,3 +88,67 @@ def analyze_mood(message):
         if word in message:
             return "sad"
     return "neutral"
+
+def get_response(message, user_name):
+    message = message.lower()
+    if any(word in message for word in ["hello", "hi", "hey"]):
+        return random.choice(greetings)
+    elif any(word in message for word in ["favorite color", ]) :
+        return "My favorite color is blue! What's yours?"
+    elif "Hobbies" in message:
+        return "I love telling jokes and playing games! What about you?"
+    elif "School subjects" in message:
+        return "I enjoy learning about science and history! What about you?"
+    elif "music" in message:
+        return "I love all kinds of music! Do you have a favorite band or artist?" 
+    elif "sports" in message:
+        return "I enjoy watching soccer and basketball! Do you have a favorite team?"
+    elif "mood" in message or "feel" in message:
+        mood_result = analyze_mood(message)
+
+        happy_responses = [
+            "That's amazing to hear!",
+            "I'm so glad you're having a good day!",
+            "Keep that positive energy going!"
+    ]
+
+        sad_responses = [
+            "I'm sorry you're feeling this way.",
+            "I'm here for you if you want to talk.",
+            "Hang in there, things will get better."
+    ]
+
+        neutral_responses = [
+            "I see. Thanks for sharing that with me.",
+            "Got it. Tell me more if you'd like.",
+            "I'm listening."
+    ] 
+        if mood_result == "happy":
+            return random.choice(happy_responses)
+        elif mood_result == "sad":
+            return random.choice(sad_responses)
+        else:
+            return random.choice(neutral_responses)
+    elif "how are you" in message:
+        return "I'm great! How are you?"
+    elif "what's your name" in message:
+        return "I'm Piter, your funning buddy!"
+    elif "bye" in message:
+        return random.choice(goodbyes)
+    elif "joke" in message or "funny" in message:
+        return random.choice(jokes)
+    elif "help" in message or "commands" in message:
+        show_help()
+        return "What else can I help with?"
+    elif any(op in message for op in ["+", "-", "*", "/"]):
+        try:
+            result = eval(message)
+            return f"The result is: {result}"
+        except:
+            return "I couldn't calculate that. Try: 10 + 5"
+
+    elif "game" in message or "play" in message:
+        play_guess_game()
+    else:
+        return random.choice(default_response())
+    
