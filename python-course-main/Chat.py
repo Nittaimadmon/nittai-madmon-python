@@ -29,7 +29,7 @@ compliments = [
     "you are so smart!",
     "you are so kind!"
 ]
-def default_response():
+def default_response(user_name):
     return ["That's interesting",
              "Tell me more!",
              "I see...",
@@ -150,7 +150,7 @@ def get_response(message, user_name):
     elif "game" in message or "play" in message:
         play_guess_game()
     else:
-        return random.choice(default_response())
+        return random.choice(default_response(user_name))
 def chat():
     print_separator()
     greet_user()
