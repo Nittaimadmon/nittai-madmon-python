@@ -151,4 +151,38 @@ def get_response(message, user_name):
         play_guess_game()
     else:
         return random.choice(default_response())
-    
+def chat():
+    print_separator()
+    greet_user()
+    user_name = input("What's your name? ")
+    print(f"Nice to meet you, {user_name}!")
+    show_help()
+    while True:
+        user_input = input(f"\n{user_name}: ").strip()
+        if not user_input:
+            continue
+        elif user_input.lower() in ["bye", "goodbye", "quit", "exit"]:
+            bot_message(f"{random.choice(goodbyes)} {user_name}!")
+            break
+        else:
+            # Get bot response
+            response = get_response(user_input, user_name)
+
+        # Check if response is "game_menu"
+        if response == "game_menu":
+            print("1. Number Guessing Game")
+            print("2. Never mind")
+            
+            choice = input("Enter choice: ")
+            if choice == "1":
+                result = play_guess_game()
+                print(result)
+            elif choice == "2":   
+                print("No problem! What else would you like to talk about?")
+            else:
+                print(response)
+        if __name__ == "__main__":
+            chat()
+        
+
+
