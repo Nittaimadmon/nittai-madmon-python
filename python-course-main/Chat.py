@@ -29,6 +29,7 @@ compliments = [
     "you are so smart!",
     "you are so kind!"
 ]
+# פונקציה שמחזירה רשימת תגובות ברירת מחדל למקרה שהבוט לא הבין את המשתמש
 def default_response(user_name):
     return ["That's interesting",
              "Tell me more!",
@@ -36,25 +37,26 @@ def default_response(user_name):
              "Cool!",
              f"Thanks for sharing, {user_name}!"
              ]
+# פונקציה שמדפיסה קו מפריד מעוצב בטרמינל
 def print_separator():
     print("=" * 20)  #
-
+    # פונקציה עזר להדפסת הודעות מהבוט בפורמט קבוע עם השם "Piter"
 def bot_message(message):
     print(f"Piter: {message}")
-
+# פונקציה המציגה למשתמש את רשימת הפקודות והאפשרויות שהבוט מציע
 def show_help():
     bot_message("I can tell jokes, give compliments, and have fun conversations! Just type 'joke', 'compliment', or 'help' to see what I can do!")
-
+# פונקציה לניהול שלב הפתיחה: בחירת ברכה אקראית וקבלת שם המשתמש
 def greet_user():
     greeting = random.choice(greetings)
     bot_message(greeting)
     user_input = input("what your name: ") 
     print(f"nice to meet you: {user_input}")
-      # User input for greeting
+# פונקציה שבוחרת ומציגה בדיחה אקראית מתוך רשימת בדיחות
 def tell_joke():
     joke = random.choice(jokes)
     bot_message(joke)
-
+# פונקציה המריצה משחק "נחש את המספר" אינטראקטיבי מול המשתמש
 def play_guess_game():
     number_to_guess = random.randint(1, 100)
     attempts = 0
@@ -76,7 +78,7 @@ def play_guess_game():
                 bot_message(f"Congratulations! You've guessed the number {number_to_guess} in {attempts} attempts!")
         except ValueError:
             bot_message("Invalid input. Please enter a number.")
-    
+# פונקציה המנתחת את הטקסט של המשתמש ומחזירה את מצב הרוח שלו (שמח, עצוב או ניטרלי)
 def analyze_mood(message):
     message = message.lower()
     happy_words = ["happy", "joy", "excited", "good", "great"]
@@ -88,7 +90,7 @@ def analyze_mood(message):
         if word in message:
             return "sad"
     return "neutral"
-
+# הפונקציה המרכזית לעיבוד הודעות: בודקת מילות מפתח ומחליטה איזו תשובה להחזיר למשתמש
 def get_response(message, user_name):
     message = message.lower()
     if any(word in message for word in ["hello", "hi", "hey"]):
@@ -151,6 +153,7 @@ def get_response(message, user_name):
         play_guess_game()
     else:
         return random.choice(default_response(user_name))
+    # פונקציית הלולאה הראשית שמנהלת את השיחה כולה עד שהמשתמש מחליט לצאת
 def chat():
     print_separator()
     greet_user()
