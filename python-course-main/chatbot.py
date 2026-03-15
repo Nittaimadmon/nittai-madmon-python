@@ -118,12 +118,12 @@ Helper functions make your code cleaner.
 
 # TODO: Write a function that prints a separator line
 # Function name: print_separator
-# What it does: Prints "=========================================="
+# What it does: Prints "----------------------------" to separate parts of the conversation
 # Parameters: none
 # Returns: nothing
 
 def print_separator():
-    # TODO: Print a line of = signs
+    # TODO: Print a line of - signs
     pass
 
 
@@ -393,9 +393,8 @@ def chat():
         # Call get_response(user_message, user_name)
         # Save response in variable
         
-        
-        # TODO: Check if response is "game_menu"
         # If yes:
+        # TODO: Check if 
         #   - Print "What would you like to play?"
         #   - Print "1. Number Guessing Game"
         #   - Print "2. (Add another game if you want)"
